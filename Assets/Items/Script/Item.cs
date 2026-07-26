@@ -3,6 +3,7 @@ using UnityEngine;
 
 public enum ItemType
 {
+    Tool,
     Weapon,
     Resource,
     Consumable,
