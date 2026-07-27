@@ -9,13 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce183039152d6ba4b8365c3b26d41511, type: 3}
-  m_Name: Axe
-  m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Axe
-  itemDescription: Use to Cut Trees
+  m_Script: {fileID: 11500000, guid: 4bb44796c9300ad4a8b39e1592062210, type: 3}
+  m_Name: Normal Axe
+  m_EditorClassIdentifier: Assembly-CSharp::ToolItem
+  itemName: Normal Axe
+  itemDescription: 
   itemType: 0
   itemValue: 1
-  itemMaxValue: 1
   itemIcon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   itemPrefab: {fileID: 4658156523189464086, guid: 8ab892bfb9ba7024189997c6b5bca374, type: 3}
+  cooldown: 2
+  toolType: 0
+  harvestPower: 1
+  durability: 100

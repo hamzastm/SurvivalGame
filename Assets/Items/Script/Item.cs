@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public enum ItemType
 {
     Tool,
@@ -11,14 +10,13 @@ public enum ItemType
     Miscellaneous
 }
 
-[CreateAssetMenu(fileName = "Item", menuName = "Scriptable Objects/Item")]
-public class Item : ScriptableObject
+public abstract class Item : ScriptableObject
 {
     public string itemName;
-    public string itemDescription;
+    [TextArea] public string itemDescription;
     public ItemType itemType;
     public int itemValue;
-    public int itemMaxValue;
     public Sprite itemIcon;
     public GameObject itemPrefab;
+    public float cooldown;
 }

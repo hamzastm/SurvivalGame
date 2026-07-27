@@ -8,6 +8,7 @@ public class Input_Handler : MonoBehaviour
     Vector2 lookInput;
 
     float isJumping;
+    float attacked;
 
     private void Awake()
     {
@@ -20,11 +21,12 @@ public class Input_Handler : MonoBehaviour
         movementInput = inputActions.Player.Move.ReadValue<Vector2>();
         isJumping = inputActions.Player.Jump.ReadValue<float>();
         lookInput = inputActions.Player.Look.ReadValue<Vector2>();
+        attacked = inputActions.Player.Attack.ReadValue<float>();
     }
 
     public Vector2 MoveDir => movementInput;
     public float IsJumping => isJumping;
-
+    public float IsAttacking => attacked;
     public Vector2 LookDir => lookInput;
 
 }

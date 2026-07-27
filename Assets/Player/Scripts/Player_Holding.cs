@@ -3,9 +3,22 @@ using UnityEngine;
 public class PlayerHolding : MonoBehaviour
 {
     [SerializeField] private Item _holdItem;
+    [SerializeField] private Transform _holdPoint;
+
     private GameObject _currentSpawnedItem;
 
-    public Item HoldItem
+    public static PlayerHolding Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+        Instance = this;
+    }
+    public Item HeldItem
     {
         get => _holdItem;
         set
@@ -19,14 +32,12 @@ public class PlayerHolding : MonoBehaviour
 
     private void Start()
     {
-        // Spawns whatever item was set in the Inspector on startup
         UpdateHeldItem();
     }
 
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        // Updates the visual in Play Mode when you swap items directly in the Inspector
         if (Application.isPlaying)
         {
             UpdateHeldItem();
@@ -36,26 +47,24 @@ public class PlayerHolding : MonoBehaviour
 
     private void UpdateHeldItem()
     {
-        // 1. Clear previous item
         if (_currentSpawnedItem != null)
         {
             Destroy(_currentSpawnedItem);
+            _currentSpawnedItem = null;
         }
 
-        // 2. Spawn new item under this hand transform
         if (_holdItem != null && _holdItem.itemPrefab != null)
         {
-            _currentSpawnedItem = Instantiate(_holdItem.itemPrefab, transform);
+            Transform parentTransform = _holdPoint != null ? _holdPoint : transform;
 
-            // Zero out position & rotation so it snaps perfectly to the hand
+            _currentSpawnedItem = Instantiate(_holdItem.itemPrefab, parentTransform, false);
             _currentSpawnedItem.transform.localPosition = Vector3.zero;
             _currentSpawnedItem.transform.localRotation = Quaternion.identity;
-
-            Debug.Log("Holding item: " + _holdItem.itemName);
         }
         else
         {
             Debug.Log("No item to hold");
         }
     }
+    public GameObject CurrentSpawnedItem => _currentSpawnedItem;
 }
