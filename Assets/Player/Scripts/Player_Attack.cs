@@ -48,9 +48,9 @@ public class Player_Attack : MonoBehaviour
 
         if (Physics.SphereCast(transform.position, 0.5f, transform.forward, out RaycastHit hit, 1f))
         {
-            if (hit.collider.TryGetComponent(out Harvest harvestable))
+            if (hit.collider.TryGetComponent(out Object_Actions objectActions))
             {
-                harvestable.HandleHarvest(tool);
+                objectActions.PreformAction(tool);
             }
         }
     }
