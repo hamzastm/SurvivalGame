@@ -1,11 +1,14 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Weapon", menuName = "Scriptable Objects/Items/Weapon")]
+public enum WeaponType { Sword, Bow, Staff, Dagger }
+
+[CreateAssetMenu(fileName = "New Weapon", menuName = "Items/Weapon")]
+
 public class WeaponItem : Item
 {
-    [Header("Weapon Stats")]
     public float damage;
     public float attackSpeed;
     public float criticalChance;
     public GameObject hitParticlePrefab;
+    public WeaponType weaponType;
 }

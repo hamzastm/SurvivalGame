@@ -1,10 +1,16 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Object_Actions : MonoBehaviour
 {
-    [Header("Requirements")]
     [SerializeField] private ToolType requiredToolType;
     [SerializeField] private string wrongToolMessage = "You don't have the right tool for this!";
+    [SerializeField] private Transform drop;
+
+    [SerializeField] private int yield = 3;
+
+    [SerializeField] private Transform particle;
 
     private Object_Health objectHealth;
 
@@ -19,7 +25,7 @@ public class Object_Actions : MonoBehaviour
         if (tool.toolType == requiredToolType)
         {
             objectHealth.Damage(tool.harvestPower);
-            Debug.Log($"You used {tool.itemName} on {objectHealth.currentHealth}!");
+            spawnPartical(particle);
         }
         else
         {
@@ -27,10 +33,25 @@ public class Object_Actions : MonoBehaviour
         }
     }
 
-
+    private float spawnRadius = 1f;
+    private float spawnHeight = 2f;
     public void ActionPreformed()
     {
-        Debug.Log($"{gameObject.name} has been harvested!");
-        // Add any additional logic for when the object is harvested, like dropping items or playing an animation.
+        gameObject.GetComponent<Collider>().enabled = false;
+        for (int i = 0; i < yield; i++)
+        {
+            float spawnUpwardForce = Random.Range(3f, 5f);
+            Quaternion randomRotation = Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
+            Transform spownedDrop = Instantiate(drop, transform.position + Random.insideUnitSphere * spawnRadius + Vector3.up * spawnHeight, randomRotation);
+            spownedDrop.GetComponent<Rigidbody>().AddForce(Vector3.up * spawnUpwardForce, ForceMode.Impulse);
+        }
+        Destroy(gameObject);
+    }
+
+    void spawnPartical(Transform partical)
+    {
+        Transform particalInstance = Instantiate(partical, transform.position, Quaternion.identity);
+        float particalDuration = particalInstance.GetComponent<ParticleSystem>().main.duration;
+        Destroy(particalInstance.gameObject, particalDuration);
     }
 }

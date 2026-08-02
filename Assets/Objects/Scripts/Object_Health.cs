@@ -12,15 +12,11 @@ public class Object_Health : MonoBehaviour
 
     public void Damage(float damageAmount)
     {
-        if (currentHealth <= 0)
+        if (currentHealth > 0)
         {
-            currentHealth = 0; 
-            return;
+            currentHealth -= damageAmount;
         }
             
-
-        currentHealth -= damageAmount;
-        Debug.Log($"{gameObject.name} took {damageAmount} damage. Remaining health: {currentHealth}");
 
         if (currentHealth <= 0f)
         {

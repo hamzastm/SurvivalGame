@@ -1,16 +1,19 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_Vitals_UI : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Player_Vitals playerVitals;
+
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private Slider hungerSlider;
+    [SerializeField] private Slider staminaSlider;
+
+    private void Update()
     {
-        
+        healthSlider.value = playerVitals.currentHealth / 100f;
+        hungerSlider.value = playerVitals.currentHunger / 100f;
+        staminaSlider.value = playerVitals.currentStamina / 100f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

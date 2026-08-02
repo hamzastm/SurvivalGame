@@ -3,8 +3,14 @@ using UnityEngine;
 public class Player_Attack : MonoBehaviour
 {
     [SerializeField] private Input_Handler inputHandler;
+    private Player_Vitals playerVitals;
 
     private float _nextAttackTime;
+
+    private void Awake()
+    {
+        playerVitals = GetComponent<Player_Vitals>();
+    }
 
     private void Update()
     {
@@ -22,20 +28,42 @@ public class Player_Attack : MonoBehaviour
 
     private void HandleUse(Item item)
     {
-        switch (item)
+        if (playerVitals.currentStamina <= 0)
         {
-            case ToolItem tool:
-                HandleTool(tool);
-                break;
-
-            case WeaponItem weapon:
-                HandleWeapon(weapon);
-                break;
-
-            default:
-                Debug.Log($"Using generic item: {item.itemName}");
-                break;
+            return;
         }
+        else
+        {
+            switch (item.itemHeaviness)
+            {
+                case ItemHeaviness.Light:
+                    playerVitals.UseStamina(5f);
+                    break;
+                case ItemHeaviness.Medium:
+                    playerVitals.UseStamina(10f);
+                    break;
+                case ItemHeaviness.Heavy:
+                    playerVitals.UseStamina(20f);
+                    break;
+                default: break;
+            }
+
+            switch (item)
+            {
+                case ToolItem tool:
+                    HandleTool(tool);
+                    break;
+
+                case WeaponItem weapon:
+                    HandleWeapon(weapon);
+                    break;
+
+                default:
+                    Debug.Log($"Using generic item: {item.itemName}");
+                    break;
+            }
+        }
+        
     }
 
     private void HandleTool(ToolItem tool)
