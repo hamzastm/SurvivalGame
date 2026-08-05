@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce183039152d6ba4b8365c3b26d41511, type: 3}
-  m_Name: Wood
+  m_Name: Stone
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Wood
-  itemDescription: Wood
-  itemType: 0
+  itemName: Stone
+  itemDescription: Stone.
+  itemType: 2
   itemValue: 1
-  itemMaxValue: 1
-  itemIcon: {fileID: 21300000, guid: 18f749ed0e097b143bba1abade42f79a, type: 3}
-  itemPrefab: {fileID: 6019798173310107658, guid: 22f8e49ea5bde2641a2333fcdbda5c47, type: 3}
-  cooldown: 3
-  itemHeaviness: 2
+  itemMaxValue: 30
+  itemIcon: {fileID: 21300000, guid: a200f6fbfc095ff4383b45ade894501c, type: 3}
+  itemPrefab: {fileID: 225032495867559852, guid: e5f897e4bdb730147bf26d9231cd8e45, type: 3}
+  cooldown: 0
+  itemHeaviness: 0

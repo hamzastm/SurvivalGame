@@ -38,7 +38,7 @@ public class Player_Movement : MonoBehaviour
 
         Vector3 move = (camForward * moveDir.y + camRight * moveDir.x);
 
-        if (inputHandler.IsJumping > 0 && characterController.isGrounded)
+        if (inputHandler.IsJumping && characterController.isGrounded)
             velocity.y = Mathf.Sqrt(2f * -gravity * jumpForce);
 
         characterController.Move(move * speed * Time.deltaTime);

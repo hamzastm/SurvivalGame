@@ -2,31 +2,60 @@ using UnityEngine;
 
 public class Input_Handler : MonoBehaviour
 {
-    InputSystem_Actions inputActions;
+    private InputSystem_Actions inputActions;
 
-    Vector2 movementInput;
-    Vector2 lookInput;
+    public Vector2 MoveDir => inputActions.Player.Move.ReadValue<Vector2>();
+    public Vector2 LookDir => inputActions.Player.Look.ReadValue<Vector2>();
 
-    float isJumping;
-    float attacked;
+    public bool IsJumping => inputActions.Player.Jump.IsPressed();
+    public bool IsAttacking => inputActions.Player.Attack.IsPressed();
+
+    public bool JumpPressedThisFrame => inputActions.Player.Jump.WasPressedThisFrame();
+    public bool AttackPressedThisFrame => inputActions.Player.Attack.WasPressedThisFrame();
+
+    public bool ToggleInventoryPressedThisFrame =>
+        inputActions.Player.ToggleInventory.WasPressedThisFrame() ||
+        inputActions.UI.ToggleInventory.WasPressedThisFrame();
+
+    public bool IsPlayerInputEnabled => inputActions.Player.enabled;
 
     private void Awake()
     {
         inputActions = new InputSystem_Actions();
+    }
+
+    private void OnEnable()
+    {
+        EnablePlayerInput();
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Player.Disable();
+        inputActions.UI.Disable();
+    }
+
+    public void EnableUIInput()
+    {
+        inputActions.Player.Disable();
+        inputActions.UI.Enable();
+    }
+
+    public void EnablePlayerInput()
+    {
+        inputActions.UI.Disable();
         inputActions.Player.Enable();
     }
 
-    private void Update()
+    public void ToggleInventoryState()
     {
-        movementInput = inputActions.Player.Move.ReadValue<Vector2>();
-        isJumping = inputActions.Player.Jump.ReadValue<float>();
-        lookInput = inputActions.Player.Look.ReadValue<Vector2>();
-        attacked = inputActions.Player.Attack.ReadValue<float>();
+        if (inputActions.Player.enabled)
+        {
+            EnableUIInput();
+        }
+        else
+        {
+            EnablePlayerInput();
+        }
     }
-
-    public Vector2 MoveDir => movementInput;
-    public float IsJumping => isJumping;
-    public float IsAttacking => attacked;
-    public Vector2 LookDir => lookInput;
-
 }

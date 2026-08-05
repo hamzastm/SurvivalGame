@@ -16,9 +16,11 @@ MonoBehaviour:
   itemDescription: 
   itemType: 0
   itemValue: 1
+  itemMaxValue: 0
   itemIcon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   itemPrefab: {fileID: 4658156523189464086, guid: 8ab892bfb9ba7024189997c6b5bca374, type: 3}
-  cooldown: 2
+  cooldown: 0.4
+  itemHeaviness: 1
   toolType: 0
   harvestPower: 1
   durability: 100

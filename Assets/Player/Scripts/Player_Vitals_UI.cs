@@ -11,9 +11,9 @@ public class Player_Vitals_UI : MonoBehaviour
 
     private void Update()
     {
-        healthSlider.value = playerVitals.currentHealth / 100f;
-        hungerSlider.value = playerVitals.currentHunger / 100f;
-        staminaSlider.value = playerVitals.currentStamina / 100f;
+        healthSlider.value = playerVitals.CurrentHealth / 100f;
+        hungerSlider.value = playerVitals.CurrentHunger / 100f;
+        staminaSlider.value = playerVitals.CurrentStamina / 100f;
     }
 
 }

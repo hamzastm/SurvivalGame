@@ -16,7 +16,7 @@ public class Player_Attack : MonoBehaviour
     {
         if (inputHandler == null) return;
 
-        if (inputHandler.IsAttacking > 0.5f && Time.time >= _nextAttackTime)
+        if (inputHandler.IsAttacking && Time.time >= _nextAttackTime)
         {
             if (PlayerHolding.Instance != null && PlayerHolding.Instance.HeldItem != null)
             {
@@ -28,7 +28,7 @@ public class Player_Attack : MonoBehaviour
 
     private void HandleUse(Item item)
     {
-        if (playerVitals.currentStamina <= 0)
+        if (playerVitals.CurrentStamina <= 0 || playerVitals.IsTired)
         {
             return;
         }

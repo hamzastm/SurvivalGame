@@ -35,15 +35,6 @@ public class PlayerHolding : MonoBehaviour
         UpdateHeldItem();
     }
 
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        if (Application.isPlaying)
-        {
-            UpdateHeldItem();
-        }
-    }
-#endif
 
     private void UpdateHeldItem()
     {

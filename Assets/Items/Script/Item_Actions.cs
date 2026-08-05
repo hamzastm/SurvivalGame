@@ -10,15 +10,7 @@ public class Item_Actions : MonoBehaviour
     /// </summary>
     public void DestroyItem()
     {
-        // If it has a parent container, destroy the parent. Otherwise destroy this object.
-        if (transform.parent != null)
-        {
-            Destroy(transform.parent.gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+       Destroy(gameObject);
     }
 
     /// <summary>

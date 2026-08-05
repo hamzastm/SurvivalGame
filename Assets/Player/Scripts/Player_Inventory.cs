@@ -6,6 +6,7 @@ public class Player_Inventory : MonoBehaviour
     [SerializeField] private int maxInventorySize = 2;
     public List<Item> inventory = new List<Item>();
 
+    [SerializeField] Inventory_UI inventory_UI;
     private void OnTriggerEnter(Collider trigger)
     {
         if (trigger.transform.TryGetComponent(out Item_Actions itemActions))
@@ -38,7 +39,6 @@ public class Player_Inventory : MonoBehaviour
                 // Fits completely into the existing stack
                 existingItem.itemValue += item.itemValue;
                 item.itemValue = 0;
-                DebugInventory();
                 return true;
             }
             else
@@ -56,7 +56,7 @@ public class Player_Inventory : MonoBehaviour
             return true;
         }
 
-       
+        inventory_UI.RefreshUI();
         return false;
     }
 

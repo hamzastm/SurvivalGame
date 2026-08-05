@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4377634385289524186}
   - component: {fileID: 8101712237816735173}
   - component: {fileID: -4254316488067723712}
+  - component: {fileID: 1277763450078888002}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Untagged
@@ -162,3 +163,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1277763450078888002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225032495867559852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc551881d633ef40ad272c81272da78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Item_Actions
+  currentItem: {fileID: 11400000, guid: 647cb67dee6b983499a25f8782b41b89, type: 2}
