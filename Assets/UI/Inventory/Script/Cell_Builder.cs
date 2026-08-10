@@ -16,6 +16,5 @@ public class CellBuilder : MonoBehaviour
     {
         quantity.text = item.itemValue.ToString();
         icon.sprite = item.itemIcon;
-        Debug.Log($"Building cell for item: {item.itemName}");
     }
 }

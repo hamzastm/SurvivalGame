@@ -13,6 +13,8 @@ public class Input_Handler : MonoBehaviour
     public bool JumpPressedThisFrame => inputActions.Player.Jump.WasPressedThisFrame();
     public bool AttackPressedThisFrame => inputActions.Player.Attack.WasPressedThisFrame();
 
+    public bool InteractPressedThisFrame => inputActions.Player.Interact.WasPressedThisFrame();
+
     public bool ToggleInventoryPressedThisFrame =>
         inputActions.Player.ToggleInventory.WasPressedThisFrame() ||
         inputActions.UI.ToggleInventory.WasPressedThisFrame();

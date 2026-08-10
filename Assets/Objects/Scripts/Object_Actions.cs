@@ -52,6 +52,7 @@ public class Object_Actions : MonoBehaviour
     {
         Transform particalInstance = Instantiate(partical, transform.position, Quaternion.identity);
         float particalDuration = particalInstance.GetComponent<ParticleSystem>().main.duration;
+        particalInstance.GetComponent<ParticleSystemRenderer>().material = gameObject.GetComponent<Renderer>().material;
         Destroy(particalInstance.gameObject, particalDuration);
     }
 }

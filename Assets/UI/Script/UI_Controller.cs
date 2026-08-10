@@ -5,6 +5,7 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private Input_Handler inputHandler;
 
     [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private GameObject craftingPanel;
 
     private void Update()
     {
@@ -12,6 +13,16 @@ public class UI_Controller : MonoBehaviour
         {
             inventoryPanel.SetActive(!inventoryPanel.activeSelf);
             inputHandler.ToggleInventoryState();
+            Cursor.visible = Cursor.visible ? false : true;
+            Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
         }
+    }
+
+    public void OpenCraftingUI()
+    {
+        craftingPanel.SetActive(true);
+        inputHandler.EnableUIInput();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }

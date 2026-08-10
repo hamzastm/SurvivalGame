@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 569146674332847533}
   - component: {fileID: 2402122271211898075}
   m_Layer: 0
-  m_Name: AxePartical
+  m_Name: HitPartical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

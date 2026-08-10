@@ -44,7 +44,6 @@ public class Inventory_UI : MonoBehaviour
         {
             GameObject newCell = Instantiate(cellPrefab, gridContainer);
 
-            Debug.Log($"Instantiated new cell for item: {item.itemName}, Quantity: {item.itemValue} , {newCell.GetComponent<CellBuilder>()}");
 
              if (newCell.TryGetComponent(out CellBuilder cellBuilder))
             {

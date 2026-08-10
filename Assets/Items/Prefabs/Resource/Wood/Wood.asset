@@ -16,8 +16,8 @@ MonoBehaviour:
   itemDescription: Wood
   itemType: 0
   itemValue: 1
-  itemMaxValue: 1
-  itemIcon: {fileID: 21300000, guid: 18f749ed0e097b143bba1abade42f79a, type: 3}
+  itemMaxValue: 30
+  itemIcon: {fileID: 21300000, guid: 7eddfdf457dbb9e48b8abadf2961d711, type: 3}
   itemPrefab: {fileID: 6019798173310107658, guid: 22f8e49ea5bde2641a2333fcdbda5c47, type: 3}
   cooldown: 3
   itemHeaviness: 2

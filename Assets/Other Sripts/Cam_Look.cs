@@ -12,6 +12,11 @@ public class Cam_Look : MonoBehaviour
 
     [SerializeField] private Transform player;
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     private void Update()
     {
@@ -24,6 +29,7 @@ public class Cam_Look : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
         player.rotation = Quaternion.Euler(0f, xRotation, 0f);
+
     }
 
 
