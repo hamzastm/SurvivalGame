@@ -12,7 +12,7 @@ public class UI_Controller : MonoBehaviour
         if (inputHandler.ToggleInventoryPressedThisFrame)
         {
             inventoryPanel.SetActive(!inventoryPanel.activeSelf);
-            inputHandler.ToggleInventoryState();
+            inputHandler.ToggleInputState();
             Cursor.visible = Cursor.visible ? false : true;
             Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
         }

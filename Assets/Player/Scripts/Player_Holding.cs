@@ -52,10 +52,6 @@ public class PlayerHolding : MonoBehaviour
             _currentSpawnedItem.transform.localPosition = Vector3.zero;
             _currentSpawnedItem.transform.localRotation = Quaternion.identity;
         }
-        else
-        {
-            Debug.Log("No item to hold");
-        }
     }
     public GameObject CurrentSpawnedItem => _currentSpawnedItem;
 }

@@ -16,6 +16,7 @@ MonoBehaviour:
   itemDescription: use to break rocks
   itemType: 0
   itemValue: 1
+  itemMaxValue: 0
   itemIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   itemPrefab: {fileID: 1901801232289900057, guid: 2903dbe2bd2d2be4a91feb65eea13fbe, type: 3}
   cooldown: 1

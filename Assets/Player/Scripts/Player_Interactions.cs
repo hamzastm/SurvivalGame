@@ -1,22 +1,38 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player_Interactions : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private Input_Handler inputHandler;
+    [SerializeField] private Transform cameraTransform;
 
-    private void Update()
+    [Header("Raycast Settings")]
+    [SerializeField] private float rayCastDistance = 4f;
+    [SerializeField] private LayerMask interactableLayer = ~0; // Default to everything
+
+    private void Awake()
     {
-        if (inputHandler.InteractPressedThisFrame)
+        if (cameraTransform == null && Camera.main != null)
         {
-            Intract(GetRayCastHit());
+            cameraTransform = Camera.main.transform;
         }
     }
 
-
-    private void Intract(RaycastHit hit)
+    private void Update()
     {
-        if (hit.collider != null)
+        if (inputHandler != null && inputHandler.InteractPressedThisFrame)
+        {
+            TryInteract();
+        }
+    }
+
+    private void TryInteract()
+    {
+        if (cameraTransform == null) return;
+
+        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, rayCastDistance, interactableLayer))
         {
             if (hit.collider.TryGetComponent(out Interactable_Object interactable))
             {
@@ -25,11 +41,13 @@ public class Player_Interactions : MonoBehaviour
         }
     }
 
-
-    float rayCastDistance = 4f;
-    private RaycastHit GetRayCastHit()
+    // Visualization for the Unity Editor Scene View
+    private void OnDrawGizmosSelected()
     {
-        RaycastHit hit = Physics.Raycast(transform.position, Camera.main.transform.forward, out hit, rayCastDistance) ? hit : default;
-        return hit;
+        if (cameraTransform != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawRay(cameraTransform.position, cameraTransform.forward * rayCastDistance);
+        }
     }
 }

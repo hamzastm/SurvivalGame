@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Input_Handler : MonoBehaviour
 {
@@ -6,6 +8,8 @@ public class Input_Handler : MonoBehaviour
 
     public Vector2 MoveDir => inputActions.Player.Move.ReadValue<Vector2>();
     public Vector2 LookDir => inputActions.Player.Look.ReadValue<Vector2>();
+
+    public float InventoryNavigation => inputActions.Player.InventoryNavigation.ReadValue<float>();
 
     public bool IsJumping => inputActions.Player.Jump.IsPressed();
     public bool IsAttacking => inputActions.Player.Attack.IsPressed();
@@ -21,6 +25,11 @@ public class Input_Handler : MonoBehaviour
 
     public bool IsPlayerInputEnabled => inputActions.Player.enabled;
 
+
+    //events
+
+    public event Action<float> OnInventoryNavigated;
+
     private void Awake()
     {
         inputActions = new InputSystem_Actions();
@@ -28,11 +37,13 @@ public class Input_Handler : MonoBehaviour
 
     private void OnEnable()
     {
+        inputActions.Player.InventoryNavigation.performed += HandleInventoryNav;
         EnablePlayerInput();
     }
 
     private void OnDisable()
     {
+        inputActions.Player.InventoryNavigation.performed -= HandleInventoryNav;
         inputActions.Player.Disable();
         inputActions.UI.Disable();
     }
@@ -49,7 +60,7 @@ public class Input_Handler : MonoBehaviour
         inputActions.Player.Enable();
     }
 
-    public void ToggleInventoryState()
+    public void ToggleInputState()
     {
         if (inputActions.Player.enabled)
         {
@@ -60,4 +71,6 @@ public class Input_Handler : MonoBehaviour
             EnablePlayerInput();
         }
     }
+
+    private void HandleInventoryNav(InputAction.CallbackContext ctx) => OnInventoryNavigated?.Invoke(ctx.ReadValue<float>());
 }

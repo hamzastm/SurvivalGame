@@ -34,7 +34,7 @@ public class Object_Actions : MonoBehaviour
     }
 
     private float spawnRadius = 1f;
-    private float spawnHeight = 2f;
+    private float spawnHeight = 1f;
     public void ActionPreformed()
     {
         gameObject.GetComponent<Collider>().enabled = false;
