@@ -1715,7 +1715,6 @@ GameObject:
   - component: {fileID: 559619864}
   - component: {fileID: 559619863}
   - component: {fileID: 559619862}
-  - component: {fileID: 559619861}
   m_Layer: 5
   m_Name: Crafting
   m_TagString: Untagged
@@ -1723,21 +1722,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &559619861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559619860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d97f477b0ef51948bb073c2c245c87f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Inventory_UI
-  playerInventoryScript: {fileID: 1402732356}
-  cellPrefab: {fileID: 2382111507250274124, guid: edddf94fd4354ab40bf9076b70278948, type: 3}
-  gridContainer: {fileID: 1057552085}
 --- !u!114 &559619862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6468,6 +6452,10 @@ PrefabInstance:
       propertyPath: craftingUI
       value: 
       objectReference: {fileID: 559619860}
+    - target: {fileID: 3748956939845069992, guid: 20d9fdd0358d9b74384f66cbafbb94b0, type: 3}
+      propertyPath: UIController
+      value: 
+      objectReference: {fileID: 1468532860}
     - target: {fileID: 3748956939845069992, guid: 20d9fdd0358d9b74384f66cbafbb94b0, type: 3}
       propertyPath: inputHandler
       value: 
