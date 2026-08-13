@@ -22,10 +22,10 @@ public class Item : ScriptableObject
     public string itemName;
     [TextArea] public string itemDescription;
     public ItemType itemType;
-    public int itemValue;
     public int itemMaxValue;
     public Sprite itemIcon;
     public GameObject itemPrefab;
+    public GameObject itemHeldPrefab;
     public float cooldown;
     public ItemHeaviness itemHeaviness;
 }

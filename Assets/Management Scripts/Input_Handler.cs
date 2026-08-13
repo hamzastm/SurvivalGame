@@ -19,6 +19,10 @@ public class Input_Handler : MonoBehaviour
 
     public bool InteractPressedThisFrame => inputActions.Player.Interact.WasPressedThisFrame() || inputActions.UI.Interact.WasPressedThisFrame();
 
+    public bool ClickPressedThisFrame => Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame;
+    public bool ClickReleasedThisFrame => Mouse.current != null && Mouse.current.leftButton.wasReleasedThisFrame;
+    public Vector2 MousePosition => Mouse.current != null ? Mouse.current.position.ReadValue() : Vector2.zero;
+
     public bool ToggleInventoryPressedThisFrame =>
         inputActions.Player.ToggleInventory.WasPressedThisFrame() ||
         inputActions.UI.ToggleInventory.WasPressedThisFrame();

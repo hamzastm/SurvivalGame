@@ -13,7 +13,7 @@ public class PlayerHolding : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
         Instance = this;
@@ -44,11 +44,9 @@ public class PlayerHolding : MonoBehaviour
             _currentSpawnedItem = null;
         }
 
-        if (_holdItem != null && _holdItem.itemPrefab != null)
+        if (_holdItem != null && _holdItem.itemHeldPrefab != null)
         {
-            Transform parentTransform = _holdPoint != null ? _holdPoint : transform;
-
-            _currentSpawnedItem = Instantiate(_holdItem.itemPrefab, parentTransform, false);
+            _currentSpawnedItem = Instantiate(_holdItem.itemHeldPrefab, _holdPoint, false);
             _currentSpawnedItem.transform.localPosition = Vector3.zero;
             _currentSpawnedItem.transform.localRotation = Quaternion.identity;
         }

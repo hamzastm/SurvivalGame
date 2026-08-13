@@ -8,8 +8,7 @@ public class Player_Interactions : MonoBehaviour
 
     [Header("Raycast Settings")]
     [SerializeField] private float rayCastDistance = 4f;
-    [SerializeField] private LayerMask interactableLayer = ~0; // Default to everything
-
+    [SerializeField] private LayerMask interactableLayer = ~3; 
     private void Awake()
     {
         if (cameraTransform == null && Camera.main != null)
@@ -41,13 +40,4 @@ public class Player_Interactions : MonoBehaviour
         }
     }
 
-    // Visualization for the Unity Editor Scene View
-    private void OnDrawGizmosSelected()
-    {
-        if (cameraTransform != null)
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawRay(cameraTransform.position, cameraTransform.forward * rayCastDistance);
-        }
-    }
 }
