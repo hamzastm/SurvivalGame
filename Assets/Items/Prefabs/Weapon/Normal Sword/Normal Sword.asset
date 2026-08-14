@@ -15,11 +15,14 @@ MonoBehaviour:
   itemName: Normal Sword
   itemDescription: Slash your enemies
   itemType: 1
-  itemValue: 0
+  itemMaxValue: 1
   itemIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   itemPrefab: {fileID: 7646487582967824033, guid: 6e6a0af5ccb7808438044c9ba9c847a0, type: 3}
+  itemHeldPrefab: {fileID: 7646487582967824033, guid: 125c767710a0af94388811fdeb13123e, type: 3}
   cooldown: 1
+  itemHeaviness: 1
   damage: 2
   attackSpeed: 1
   criticalChance: 50
   hitParticlePrefab: {fileID: 0}
+  weaponType: 0

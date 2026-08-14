@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 4098600054440757443}
   - component: {fileID: 2515013045329004629}
   - component: {fileID: 1524383484519522372}
-  - component: {fileID: 1287231830728408203}
   m_Layer: 0
-  m_Name: Sword
+  m_Name: HeldSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,16 +112,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1287231830728408203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7646487582967824033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28787de909131eb4f85366fb9890db93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Item_Intract
-  item: {fileID: 11400000, guid: 92248c9a2edacc642b1089d0837404ad, type: 2}

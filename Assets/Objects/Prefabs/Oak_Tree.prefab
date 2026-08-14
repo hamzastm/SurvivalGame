@@ -108,7 +108,7 @@ MonoBehaviour:
   requiredToolType: 0
   wrongToolMessage: You don't have the right tool for this!
   drop: {fileID: 7126672723906541145, guid: 22f8e49ea5bde2641a2333fcdbda5c47, type: 3}
-  yield: 3
+  yield: 20
   particle: {fileID: 7852351226342687624, guid: 970cfdcda9d656b4a8ab3f3b9df79be4, type: 3}
 --- !u!114 &2149089323559211363
 MonoBehaviour:

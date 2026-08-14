@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Recipe;
 
 public class Inventory_Handler : MonoBehaviour
 {
@@ -27,8 +28,8 @@ public class Inventory_Handler : MonoBehaviour
     {
         inventoryCells.AddRange(inventoryCellParent.GetComponentsInChildren<Cell_Handler>());
         hotBarCells.AddRange(hotBarObj.GetComponentsInChildren<Cell_Handler>());
-        allCells.AddRange(inventoryCells);
         allCells.AddRange(hotBarCells);
+        allCells.AddRange(inventoryCells);
     }
 
     private void Update()
@@ -90,6 +91,35 @@ public class Inventory_Handler : MonoBehaviour
             Debug.LogWarning($"Not enough space in inventory to add {remainingQuantity} of {item.itemName}");
         }
     }
+
+    public void RemoveItem(Item item, int quantity)
+    {
+        int remainingQuantity = quantity;
+        foreach (Cell_Handler cell in allCells)
+        {
+            if (cell.HasItem() && cell.GetItem() == item)
+            {
+                int currentQuantity = cell.GetQuantity();
+                if (currentQuantity <= remainingQuantity)
+                {
+                    cell.ClearItem();
+                    remainingQuantity -= currentQuantity;
+                }
+                else
+                {
+                    cell.RemoveQuantity(remainingQuantity);
+                    return;
+                }
+                if (remainingQuantity <= 0)
+                    return;
+            }
+        }
+        if (remainingQuantity > 0)
+        {
+            Debug.LogWarning($"Not enough {item.itemName} in inventory to remove {quantity}");
+        }
+    }
+
 
     public void PickUpItem()
     {
@@ -170,6 +200,11 @@ public class Inventory_Handler : MonoBehaviour
                 dragedIcon.sprite = dragedCell.GetItem().itemIcon;
                 dragedIcon.color = new Color(1,1,1,0.5f);
                 dragedIcon.enabled = true;
+            }else
+            {
+                dragedCell = null;
+                isDragging = false;
+                dragedIcon.enabled = false;
             }
         }
     }
@@ -232,6 +267,30 @@ public class Inventory_Handler : MonoBehaviour
             Vector3 mousePos = inputHandler.MousePosition;
             dragedIcon.transform.position = mousePos;
         }
+    }
+
+    public bool CheckIngredients(Recipe recipe)
+    {
+        if (recipe == null) return false;
+
+        foreach (Ingredient ingredient in recipe.Ingredients)
+        {
+            int availableQuantity = 0;
+
+            foreach (Cell_Handler inventoryCell in allCells)
+            {
+                if (inventoryCell.HasItem() && inventoryCell.GetItem() == ingredient.item)
+                {
+                    availableQuantity += inventoryCell.GetQuantity();
+                }
+            }
+
+            if (availableQuantity < ingredient.quantity)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     private Cell_Handler GetHoverdCell()
