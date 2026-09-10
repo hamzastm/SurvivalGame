@@ -5,6 +5,8 @@ public class PlayerHolding : MonoBehaviour
     [SerializeField] private Item _holdItem;
     [SerializeField] private Transform _holdPoint;
 
+    [SerializeField] private GameObject handPrefab;
+
     private GameObject _currentSpawnedItem;
 
     public static PlayerHolding Instance { get; private set; }
@@ -38,17 +40,22 @@ public class PlayerHolding : MonoBehaviour
 
     private void UpdateHeldItem()
     {
+        
+
+
         if (_currentSpawnedItem != null)
         {
             Destroy(_currentSpawnedItem);
             _currentSpawnedItem = null;
         }
 
-        if (_holdItem != null && _holdItem.itemHeldPrefab != null)
+        if (_holdItem && _holdItem.itemHeldPrefab != null)
         {
             _currentSpawnedItem = Instantiate(_holdItem.itemHeldPrefab, _holdPoint, false);
-            _currentSpawnedItem.transform.localPosition = Vector3.zero;
-            _currentSpawnedItem.transform.localRotation = Quaternion.identity;
+        }
+        else if (!_holdItem)
+        {
+            _currentSpawnedItem = Instantiate(handPrefab, _holdPoint, false);
         }
     }
     public GameObject CurrentSpawnedItem => _currentSpawnedItem;

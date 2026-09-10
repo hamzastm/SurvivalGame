@@ -7546,8 +7546,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16c9a3e588725043a452de0443cfd78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_Holding
-  _holdItem: {fileID: 11400000, guid: 85d44e509acf3894d85d42530cbcca66, type: 2}
+  _holdItem: {fileID: 0}
   _holdPoint: {fileID: 1952241978}
+  handPrefab: {fileID: 1439108311685277748, guid: 9caf0cc23dd43ba478ae1adf09541004, type: 3}
 --- !u!114 &1402732352
 MonoBehaviour:
   m_ObjectHideFlags: 0
